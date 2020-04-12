@@ -31,7 +31,7 @@ namespace mhw_backup_launcher {
         BackupMhwSaveFiles(steamInstallPath, steamUserId, MHW_STEAM_APP_ID, steamUsername, backupFolderPath);
       } catch (Exception err) {
         Console.Write(err);
-        Console.Write("\nPress any key to continue...");
+        Console.Write("\nPress Enter to continue...");
         Console.ReadLine();
       }
 
