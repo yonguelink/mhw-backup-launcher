@@ -10,7 +10,8 @@ namespace mhw_backup_launcher {
 
     private static void Main(string[] args) {
       try {
-        BackupMhwSaveFiles(STEAM_INSTALL_PATH, STEAM_USER_ID, MHW_STEAM_APP_ID, STEAM_USERNAME, @"G:\Backup");
+        throw new Exception("Whatever");
+        //BackupMhwSaveFiles(STEAM_INSTALL_PATH, STEAM_USER_ID, MHW_STEAM_APP_ID, STEAM_USERNAME, @"G:\Backup");
       } catch (Exception err) {
         Console.Write(err);
         Console.Write("\nPress any key to continue...");
