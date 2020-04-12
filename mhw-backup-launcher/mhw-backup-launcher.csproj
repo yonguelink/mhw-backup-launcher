@@ -26,6 +26,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <ApplicationIcon>mhw.ico</ApplicationIcon>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="Launcher.cs" />
     <Reference Include="System" />
