@@ -11,36 +11,18 @@ using System.Windows.Forms;
 
 namespace mhw_backup_launcher {
   internal static class Launcher {
-    private const string DefaultThudPath = @"D:\THUD\THUD.exe";
+    private const int MHW_STEAM_APP_ID = 582010;
     private static void Main(string[] args) {
-      //Default path for my PC + allow anyone to cmd the sh!t out of these
-      //Param 1 = THUD Path (including exe)
-      //Param 2 = D3 Path (including exe)
-      //Param 3 = User name to run Diablo
-      //Param 4 = Password for the user that'll run Diablo
-      var thudPath = args.Length > 0 ? args[0] : DefaultThudPath;
-
-      //Make sure we won't try to launch something that does not exists
-      if (!File.Exists(thudPath)) throw new FileNotFoundException(thudPath);
       //Starts THUD
-      StartThud(thudPath);
+      StartMhw(MHW_STEAM_APP_ID);
     }
 
-    private static void StartThud(string thudPath) {
-      //Give 5 second to start D3, even if it takes more like 10
-      Thread.Sleep(5000);
-      var workingDirectory = new FileInfo(thudPath).DirectoryName;
-      if (workingDirectory == null) throw new FileNotFoundException(thudPath);
-
-      var thudStartInfo = new ProcessStartInfo
+    private static void StartMhw(int mhwSteamAppId) {
+      var mhwStartInfo = new ProcessStartInfo
       {
-          FileName = thudPath,
-          WorkingDirectory = workingDirectory,
-          UseShellExecute = false,
-          LoadUserProfile = true,
-          Verb = "runas"
+          FileName = $"steam://rungameid/{mhwSteamAppId}",
       };
-      Process.Start(thudStartInfo);
+      Process.Start(mhwStartInfo);
     }
   }
 }
