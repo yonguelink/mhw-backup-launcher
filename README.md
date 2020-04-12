@@ -22,4 +22,4 @@ Small tool that backups Steam user save data before launching the game.
 		* If any of your path contains spaces you will need to quote them like so
 		* An exemple
 
-        `C:\mhw-backup-launcher.exe "C:/Program Files/Steam" 1234567890 YourUsername C:/Backups`
+          `C:\mhw-backup-launcher.exe "C:/Program Files/Steam" 1234567890 YourUsername C:/Backups`
