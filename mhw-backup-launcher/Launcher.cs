@@ -10,8 +10,25 @@ namespace mhw_backup_launcher {
 
     private static void Main(string[] args) {
       try {
-        throw new Exception("Whatever");
-        //BackupMhwSaveFiles(STEAM_INSTALL_PATH, STEAM_USER_ID, MHW_STEAM_APP_ID, STEAM_USERNAME, @"G:\Backup");
+        if (args.Length != 4) {
+          throw new ArgumentException(
+            $"Expected 3 arguments, got {args.Length}.\n" +
+            "Run like so: mhw-backup-launcher.exe <steamInstallPath> <steamUserId> <steamUsername> <backupFolderPath>\n" +
+            "Where: \n" +
+            "\t<steamInstallPath> is the Path to Steam installation Folder (this folder needs to contain the `userdata` folder\n" +
+            "\t<steamUserId> is your Steam User ID (You can find the ID in the `userdata` folder, there should be only one folder there with a bunch of numbers)\n" +
+            "\t<steamUsername> is your Steam username so you can easily identify the backups\n" +
+            "\t<backupFolderPath> is the path where you want your backups to be saved to\n" +
+            "NOTE: All Paths can be written with forward slash instead of double-backslash for simplicity"
+          );
+        }
+
+        string steamInstallPath = args[0].Replace('/', '\\');
+        string steamUserId = args[1];
+        string steamUsername = args[2];
+        string backupFolderPath = args[3].Replace('/', '\\');
+
+        BackupMhwSaveFiles(steamInstallPath, steamUserId, MHW_STEAM_APP_ID, steamUsername, backupFolderPath);
       } catch (Exception err) {
         Console.Write(err);
         Console.Write("\nPress any key to continue...");
