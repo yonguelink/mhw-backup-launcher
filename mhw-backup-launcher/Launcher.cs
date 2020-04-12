@@ -6,8 +6,6 @@ namespace mhw_backup_launcher {
   internal static class Launcher {
     private const string MHW_STEAM_APP_ID = "582010";
 
-    // TODO: Args
-
     private static void Main(string[] args) {
       try {
         if (args.Length != 4) {
@@ -35,7 +33,7 @@ namespace mhw_backup_launcher {
         Console.ReadLine();
       }
 
-      //StartMhw(MHW_STEAM_APP_ID);
+      StartMhw(MHW_STEAM_APP_ID);
     }
 
     private static void BackupMhwSaveFiles(string steamInstallPath, string steamUserId, string mhwSteamAppId, string steamUsername, string backupFolderPath) {
@@ -74,7 +72,7 @@ namespace mhw_backup_launcher {
       }
     }
 
-    private static void StartMhw(int mhwSteamAppId) {
+    private static void StartMhw(string mhwSteamAppId) {
       var mhwStartInfo = new ProcessStartInfo {
         FileName = $"steam://rungameid/{mhwSteamAppId}",
       };
