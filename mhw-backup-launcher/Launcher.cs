@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 
 namespace mhw_backup_launcher {
   internal static class Launcher {
@@ -48,14 +49,13 @@ namespace mhw_backup_launcher {
       string backupFolderNowPath = Path.Combine(
         backupFolderPath,
         steamUsername,
-        "Monster Hunter World",
-        DateTime.Now.ToString("yyyy-MM-ddTHH-mm-ss")
+        "Monster Hunter World"
       );
 
-      DirectoryCopy(mhwSaveFolder, backupFolderNowPath);
+      string zipPath = DirectoryCompress(mhwSaveFolder, backupFolderNowPath);
     }
 
-    private static void DirectoryCopy (string sourceDirName, string destDirName) {
+    private static string DirectoryCompress (string sourceDirName, string destDirName) {
       DirectoryInfo dir = new DirectoryInfo(sourceDirName);
 
       if (!dir.Exists) {
@@ -66,10 +66,9 @@ namespace mhw_backup_launcher {
 
       Directory.CreateDirectory(destDirName);
 
-      FileInfo[] files = dir.GetFiles();
-      foreach (FileInfo file in files) {
-        file.CopyTo(Path.Combine(destDirName, file.Name), false);
-      }
+      string fileName = Path.Combine(destDirName, DateTime.Now.ToString("yyyy-MM-ddTHH-mm-ss"));
+      ZipFile.CreateFromDirectory(sourceDirName, $"{fileName}.zip");
+      return fileName;
     }
 
     private static void StartMhw(string mhwSteamAppId) {
