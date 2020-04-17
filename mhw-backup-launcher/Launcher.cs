@@ -37,11 +37,11 @@ namespace mhw_backup_launcher {
 
         string zipFilePath = BackupMhwSaveFiles(steamInstallPath, steamUserId, MHW_STEAM_APP_ID, steamUsername, backupFolderPath);
 
+        StartMhw(MHW_STEAM_APP_ID);
         if (args.Length == 5) {
           UploadToGoogleDrive(zipFilePath, steamUsername);
         }
 
-        StartMhw(MHW_STEAM_APP_ID);
       } catch (Exception err) {
         Console.Write(err);
         Console.Write("\nPress Enter to continue...");
