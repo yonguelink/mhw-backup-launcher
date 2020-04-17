@@ -41,7 +41,7 @@ namespace mhw_backup_launcher {
           UploadToGoogleDrive(zipFilePath, steamUsername);
         }
 
-        //StartMhw(MHW_STEAM_APP_ID);
+        StartMhw(MHW_STEAM_APP_ID);
       } catch (Exception err) {
         Console.Write(err);
         Console.Write("\nPress Enter to continue...");
@@ -131,10 +131,6 @@ namespace mhw_backup_launcher {
           request.Fields = "id";
           request.Upload();
       }
-      var file = request.ResponseBody;
-      Console.WriteLine("File ID: " + file.Id);
-
-      Console.Read();
     }
 
     private static string BackupMhwSaveFiles(string steamInstallPath, string steamUserId, string mhwSteamAppId, string steamUsername, string backupFolderPath) {
