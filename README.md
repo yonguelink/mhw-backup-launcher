@@ -36,6 +36,19 @@ Small tool that backups Steam user save data before launching the game.
         `C:\mhw-backup-launcher.exe "C:/Program Files/Steam" 1234567890 YourUsername
         C:/Backups`
 
+## Development
+
+1. Create a Client Drive API
+    * Hit the `Enable the Drive API` button in this page: https://developers.google.com/drive/api/v3/quickstart/dotnet
+    * Download the client configuration and save the `credentials.json` file into the `mhw-backup-launcher/creds` folder (you have to create the folder)
+    * Download the required packages
+
+        ```sh
+        cd mhw-backup-launcher; dotnet restore --packages .nuget/packages/
+        ```
+
+    * Compile via `dotnet build`
+
 ## Releasing
 
 The release process happens with GitHub's `hub` CLI.

@@ -1,5 +1,7 @@
 *.lnk
 RELEASE.md
+mhw-backup-launcher/creds/*
+.mhw-backup-launcher-auth/
 # Created by https://www.gitignore.io/api/visualstudiocode,visualstudio
 
 ### VisualStudioCode ###
